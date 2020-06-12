@@ -54,7 +54,9 @@
                       </div>
                     </el-form-item>
                     <el-form-item prop="code">
-                       <el-link :href="wachat" type="success" target="_blank">使用微信登录</el-link>
+                      <el-link :href="wachat" type="success" target="_self"
+                        >使用微信登录</el-link
+                      >
                     </el-form-item>
                     <el-form-item class="form-item">
                       <el-button
@@ -78,6 +80,7 @@
 <script>
 import User from "../gloabl/request/user";
 import wachatUrl from "../../wachat.config";
+import DStorage from "../gloabl/stirage/index";
 export default {
   name: "Login",
   data() {
@@ -115,7 +118,6 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           User.sms_login(this.smsFrom).then(res => {
-            console.log(res);
             if (res.code === 200) {
               this.$message({
                 message: res.message,
@@ -123,10 +125,10 @@ export default {
               });
               const that = this;
               setTimeout(function() {
-                that.$router.push({ name: "Home" });
+                that.$router.push({ path: "/" });
               }, 1000);
-              localStorage.setItem("token", res.data.token);
-              localStorage.setItem("userinfo", res.data.userinfo);
+              DStorage.setToken(res.data.token);
+              DStorage.setUserInfo(res.data.userinfo);
             } else {
               this.$message({
                 message: "登录失败," + res.message,
@@ -142,9 +144,7 @@ export default {
         return;
       }
       let phone = this.smsFrom.phone;
-      User.sms_send({ phone }).then(res => {
-        console.log(res);
-      });
+      User.sms_send({ phone });
       this.$refs.smsFrom.validateField("phone", errMsg => {
         if (errMsg) return;
         this.disabled = true;

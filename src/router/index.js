@@ -1,30 +1,23 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-
+import routes from "./routes.js";
+import DataStore from "../gloabl/stirage/index";
 Vue.use(VueRouter);
-
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/login",
-    name: "Login",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/UserLogin.vue")
-  }
-];
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
   routes
+});
+router.beforeEach((to, from, next) => {
+  const TOKEN = DataStore.getToken();
+  if (TOKEN) {
+    // 已经登录并且在登录页重定向到主页
+    if (to.name === "UserLogin") {
+      next({ name: "Root", replace: true });
+      return;
+    }
+  }
+  next();
 });
 
 export default router;
