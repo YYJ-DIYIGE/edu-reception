@@ -7,5 +7,6 @@ export default {
   user: id => `${PREFIX}/user/${id}`,
   userbind: id => `${PREFIX}/user/bind/${id}`,
   wachatbind: id => `${PREFIX}/wachat/bind/${id}`, //绑定
-  indexAdvert: `${PREFIX}/index/advertise`
+  indexAdvert: `${PREFIX}/index/advertise`,
+  indexCourse: `${PREFIX}/index/course`
 };
