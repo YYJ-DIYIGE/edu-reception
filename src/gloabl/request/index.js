@@ -4,7 +4,7 @@ export default {
   advertise() {
     return request.get(API.indexAdvert);
   },
-  course(){
+  course() {
     return request.get(API.indexCourse);
   }
 };

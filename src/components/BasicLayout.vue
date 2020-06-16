@@ -23,7 +23,7 @@ export default {
 
 <style type="text/css" lang="less">
 .page-wrapper {
-  height: 100vh;
+  height: 100%;
   background-color: #f0f2f5;
   display: flex;
 }
@@ -44,5 +44,6 @@ export default {
 
 .page-body {
   flex: 1;
+  background: #f7f7f7;
 }
 </style>

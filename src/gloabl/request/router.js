@@ -8,5 +8,8 @@ export default {
   userbind: id => `${PREFIX}/user/bind/${id}`,
   wachatbind: id => `${PREFIX}/wachat/bind/${id}`, //绑定
   indexAdvert: `${PREFIX}/index/advertise`,
-  indexCourse: `${PREFIX}/index/course`
+  indexCourse: `${PREFIX}/index/course`,
+  zhiye: `${PREFIX}/zhiyeShow`,
+  zhiyeId: id => `${PREFIX}/zhiye/${id}`,
+  zhiyePath: `${PREFIX}/zhiyePath`,
 };

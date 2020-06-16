@@ -1,12 +1,14 @@
 import UserLogin from "../views/UserLogin.vue";
 import Error404 from "../views/Error404.vue";
 // import index from "../views/index.vue";
-import ZhiyeKc from "../views/ZhiyeKc.vue";
+import Zhiye from "../views/ZhiyeKc.vue";
 import BasicLayout from "@/components/BasicLayout.vue";
 const index = () => import("../views/index.vue");
 const User = () => import("../views/UserInfo.vue");
 const UserSetting = () => import("../views/UserSetting.vue");
 const UserSecurity = () => import("../views/UserSecurity.vue");
+const ZhiyeDetail = () => import("../views/ZhiyeDetails.vue");
+const CourseDetail = () => import("../views/CourseDetails.vue");
 export default [
   {
     path: "/login",
@@ -31,15 +33,25 @@ export default [
         }
       },
       {
-        path: "/zhiyekc",
-        name: "ZhiyeKc",
+        path: "/zhiye",
+        name: "Zhiye",
         position: "head",
-        component: ZhiyeKc,
+        component: Zhiye,
         meta: {
           nav: {
             title: "职业课"
           }
         }
+      },
+      {
+        path: "/zhiye/:id",
+        name:"ZhiyeDetail",
+        component:ZhiyeDetail
+      },
+      {
+        path: "/zhiye/course/:id",
+        name:"CourseDetail",
+        component:CourseDetail
       },
       {
         path: "/user",

@@ -26,10 +26,15 @@
         <h3 class="course-title">最新课程</h3>
         <h4 class="course-sub-title">最新的课程是最好的课程</h4>
         <div class="course-list">
-          <div class="course-item" v-for="item in course" :key="item.id" :id="item.id">
+          <div
+            class="course-item"
+            v-for="item in course"
+            :key="item.id"
+            :id="item.id"
+          >
             <img class="image" :src="item.image_url" alt="图片" />
-            <h3 class="course-name">{{item.name}}</h3>
-            <h3 class="course-tips">{{item.tips}}</h3>
+            <h3 class="course-name">{{ item.name }}</h3>
+            <h3 class="course-tips">{{ item.tips }}</h3>
           </div>
         </div>
       </div>
@@ -50,7 +55,7 @@ export default {
           material: []
         }
       ],
-      course:[]
+      course: []
     };
   },
   created() {
@@ -65,10 +70,10 @@ export default {
       });
     },
     getCourse() {
-      index.course().then(res =>{
+      index.course().then(res => {
         console.log(res);
-        this.course = res
-      })
+        this.course = res;
+      });
     }
   }
 };
@@ -95,33 +100,33 @@ export default {
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
-.course-section{
+.course-section {
   width: 1280px;
   margin: 0 auto;
-  .course-sub-title{
+  .course-sub-title {
     font-size: 14px;
     color: #05524b;
   }
-  .course-list{
+  .course-list {
     display: flex;
     height: 300px;
     background: #f0f2f5;
     justify-content: space-between;
-    .course-item{
+    .course-item {
       width: 300px;
       background: rgb(253, 253, 253);
-      border: 1px solid #607D8B;
-      .image{
+      border: 1px solid #607d8b;
+      .image {
         width: 100%;
         display: block;
         height: 200px;
         background-color: #ffffff;
-        border-bottom: 1px solid #607D8B;
+        border-bottom: 1px solid #607d8b;
       }
-      .course-name{
+      .course-name {
         padding-left: 20px;
       }
-      .course-tips{
+      .course-tips {
         padding-left: 20px;
         font-size: 16px;
         color: #695c4a;
