@@ -31,6 +31,7 @@
             v-for="item in course"
             :key="item.id"
             :id="item.id"
+            @click="paly(item.id)"
           >
             <img class="image" :src="item.image_url" alt="图片" />
             <h3 class="course-name">{{ item.name }}</h3>
@@ -63,6 +64,9 @@ export default {
     this.getCourse();
   },
   methods: {
+    paly(id) {
+      this.$router.push({ path: "/zhiye/course/" + id, query: { id } });
+    },
     getAdvertise() {
       index.advertise().then(res => {
         console.log(res);

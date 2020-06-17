@@ -1,102 +1,114 @@
 <template>
   <div class="zhiyeEdit-container">
     <div class="zhiyeEdit-header">
-      <h1>{{zhiye.name}}</h1>
-      <h4>{{zhiye.description}}</h4>
+      <h1>{{ zhiye.name }}</h1>
+      <h4>{{ zhiye.description }}</h4>
     </div>
     <div class="zhiyeEdit-body">
       <div class="learning-route">
         <h4 class="learning-title">学习路线</h4>
-        <div class="grade">{{grade}} / {{ins+1}}</div>
+        <div class="grade">{{ grade }} / {{ ins + 1 }}</div>
         <div class="course-list">
-          <div class="course-item" @click="course(item.id)" v-for="item in zhiyepath[ins].Course" :key="item.id">
+          <div
+            class="course-item"
+            @click="course(item.id)"
+            v-for="item in zhiyepath[ins].Course"
+            :key="item.id"
+          >
             <img class="image" :src="item.image_url" alt="图片" />
-            <h3 class="course-name">{{item.name}}</h3>
-            <h3 class="course-tips">{{item.tips}}</h3>
+            <h3 class="course-name">{{ item.name }}</h3>
+            <h3 class="course-tips">{{ item.tips }}</h3>
           </div>
         </div>
       </div>
       <div class="grade-sidebar">
         <div class="menu-list">
-          <div :class="['menu-item',{active: index==ins}]" v-for="(data,index) in zhiyepath" :key="index" @click="active(index,data.name)">{{data.name}}</div>
+          <div
+            :class="['menu-item', { active: index == ins }]"
+            v-for="(data, index) in zhiyepath"
+            :key="index"
+            @click="active(index, data.name)"
+          >
+            {{ data.name }}
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import Api from "../gloabl/request/api"
+import Api from "../gloabl/request/api";
 export default {
-  data(){
-    return{
-      grade:"",
-      zhiye:{
-        name:'',
-        description:''
+  data() {
+    return {
+      grade: "",
+      zhiye: {
+        name: "",
+        description: ""
       },
-      zhiyepath:[
+      zhiyepath: [
         {
-          name:'',
-          Course:[]
+          name: "",
+          Course: []
         }
       ],
-      ins:0
-    }
+      ins: 0
+    };
   },
-  created(){
+  created() {
     this.getZhiye();
     this.getZhiyePath();
   },
-  methods:{
-    active(index,name){
+  methods: {
+    active(index, name) {
       this.grade = name;
-      this.ins= index;
+      this.ins = index;
     },
-    getZhiye(){
+    getZhiye() {
       let id = this.$route.query.id;
-      Api.zhiyeEdit(id).then(res =>{
+      Api.zhiyeEdit(id).then(res => {
         this.zhiye = res.ZhiyeEdit;
-      })
+      });
     },
-    getZhiyePath(){
+    getZhiyePath() {
       let id = this.$route.query.id;
-     Api.zhiyePath({ zhiye_id: id }).then(res =>{
-       console.log(res)
-      this.zhiyepath = res.ZhiyePaths
-      this.grade = res.ZhiyePaths[0].name;
-     })
+      Api.zhiyePath({ zhiye_id: id }).then(res => {
+        console.log(res);
+        this.zhiyepath = res.ZhiyePaths;
+        this.grade = res.ZhiyePaths[0].name;
+      });
     },
-    course(id){
-       this.$router.push({ path: "/zhiye/course/" + id, query: { id } });
+    course(id) {
+      this.$router.push({ path: "/zhiye/course/" + id, query: { id } });
     }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>
-.learning-route{
+.learning-route {
   border: 1px solid;
   height: 450px;
   padding: 10px;
-  .grade{
+  .grade {
     border: 1px solid;
     border-radius: 45px;
     padding-left: 20px;
   }
 }
-.zhiyeEdit-container{
+.zhiyeEdit-container {
   height: 100%;
 }
-.zhiyeEdit-header{
+.zhiyeEdit-header {
   color: #cc8872;
   padding-top: 50px;
   height: 300px;
   text-align: center;
   background: color(#000);
-  h1{
-     letter-spacing: 5px;
+  h1 {
+    letter-spacing: 5px;
   }
-  h4{
+  h4 {
     letter-spacing: 1px;
     width: 600px;
     margin: 0 auto;
@@ -104,7 +116,7 @@ export default {
     line-height: 20px;
   }
 }
-.zhiyeEdit-body{
+.zhiyeEdit-body {
   width: 1280px;
   margin: 0 auto;
   margin-top: 10px;
@@ -116,7 +128,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   height: 320px;
-  overflow:auto;
+  overflow: auto;
   background: #f0f2f5;
   .course-item {
     cursor: pointer;
@@ -125,7 +137,7 @@ export default {
     background: rgb(253, 253, 253);
     border: 1px solid #607d8b;
     margin-top: 10px;
-    h3{
+    h3 {
       -webkit-line-clamp: 1;
       word-break: break-all;
       display: -webkit-box; /**对象作为伸缩盒子模型展示**/
@@ -150,18 +162,18 @@ export default {
     }
   }
 }
-.grade-sidebar{
+.grade-sidebar {
   width: 200px;
   height: 300px;
   border: 1px solid;
   margin-left: 50px;
-  .menu-item{
+  .menu-item {
     padding-left: 5px;
     line-height: 40px;
     cursor: pointer;
   }
-  .menu-item.active{
-    background: #607D8B;
+  .menu-item.active {
+    background: #607d8b;
   }
 }
 </style>

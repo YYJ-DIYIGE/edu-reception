@@ -11,5 +11,7 @@ export default {
   indexCourse: `${PREFIX}/index/course`,
   zhiye: `${PREFIX}/zhiyeShow`,
   zhiyeId: id => `${PREFIX}/zhiye/${id}`,
-  zhiyePath: `${PREFIX}/zhiyePath`,
+  zhiyePath: `${PREFIX}/zhiyePath`, //职业路径
+  courseId: id => `${PREFIX}/course/${id}`, //课程
+  chapters: `${PREFIX}/chapters`
 };

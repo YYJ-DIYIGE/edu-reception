@@ -10,7 +10,13 @@ export default {
   zhiyeEdit(id) {
     return request.get(API.zhiyeId(id));
   },
-  zhiyePath(params){
+  zhiyePath(params) {
     return request.get(API.zhiyePath, params);
+  },
+  courseShow(id) {
+    return request.get(API.courseId(id));
+  },
+  chaptersId(params) {
+    return request.get(API.chapters, params);
   }
 };

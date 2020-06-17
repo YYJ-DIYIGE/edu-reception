@@ -11,7 +11,9 @@
         <div class="item-right">
           <h3 class="item-name">{{ item.name }}</h3>
           <h5 class="item-desc">{{ item.description }}</h5>
-          <div class="item-tips" @click="edit(item.active,item.id)">{{ item.active ? "学习" : "敬请期待" }}</div>
+          <div class="item-tips" @click="edit(item.active, item.id)">
+            {{ item.active ? "学习" : "敬请期待" }}
+          </div>
         </div>
       </div>
     </div>
@@ -36,9 +38,9 @@ export default {
         this.zhiye = res;
       });
     },
-    edit(active,id){
-      if(active){
-         this.$router.push({ path: "/zhiye/" + id, query: { id } });
+    edit(active, id) {
+      if (active) {
+        this.$router.push({ path: "/zhiye/" + id, query: { id } });
       }
     }
   }

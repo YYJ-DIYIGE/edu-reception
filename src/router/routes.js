@@ -9,11 +9,17 @@ const UserSetting = () => import("../views/UserSetting.vue");
 const UserSecurity = () => import("../views/UserSecurity.vue");
 const ZhiyeDetail = () => import("../views/ZhiyeDetails.vue");
 const CourseDetail = () => import("../views/CourseDetails.vue");
+const Video = () => import("../views/video.vue");
 export default [
   {
     path: "/login",
     component: UserLogin,
     name: "UserLogin"
+  },
+  {
+    path: "/video/:id",
+    component: Video,
+    name: "Video"
   },
   {
     path: "/",
@@ -45,13 +51,13 @@ export default [
       },
       {
         path: "/zhiye/:id",
-        name:"ZhiyeDetail",
-        component:ZhiyeDetail
+        name: "ZhiyeDetail",
+        component: ZhiyeDetail
       },
       {
         path: "/zhiye/course/:id",
-        name:"CourseDetail",
-        component:CourseDetail
+        name: "CourseDetail",
+        component: CourseDetail
       },
       {
         path: "/user",
