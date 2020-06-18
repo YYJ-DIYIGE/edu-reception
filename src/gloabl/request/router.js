@@ -13,5 +13,7 @@ export default {
   zhiyeId: id => `${PREFIX}/zhiye/${id}`,
   zhiyePath: `${PREFIX}/zhiyePath`, //职业路径
   courseId: id => `${PREFIX}/course/${id}`, //课程
-  chapters: `${PREFIX}/chapters`
+  chapters: `${PREFIX}/chapters`,
+  skill: `${PREFIX}/skill`,
+  skillId: id => `${PREFIX}/skill/${id}`
 };

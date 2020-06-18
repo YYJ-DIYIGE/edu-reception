@@ -18,5 +18,11 @@ export default {
   },
   chaptersId(params) {
     return request.get(API.chapters, params);
+  },
+  skill() {
+    return request.get(API.skill);
+  },
+  skillId(id) {
+    return request.get(API.skillId(id));
   }
 };

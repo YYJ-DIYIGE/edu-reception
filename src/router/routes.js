@@ -1,8 +1,7 @@
-import UserLogin from "../views/UserLogin.vue";
-import Error404 from "../views/Error404.vue";
-// import index from "../views/index.vue";
-import Zhiye from "../views/ZhiyeKc.vue";
-import BasicLayout from "@/components/BasicLayout.vue";
+const UserLogin = () => import("../views/UserLogin.vue");
+const Error404 = () => import("../views/Error404.vue");
+const Zhiye = () => import("../views/ZhiyeKc.vue");
+const BasicLayout = () => import("@/components/BasicLayout.vue");
 const index = () => import("../views/index.vue");
 const User = () => import("../views/UserInfo.vue");
 const UserSetting = () => import("../views/UserSetting.vue");
@@ -10,6 +9,8 @@ const UserSecurity = () => import("../views/UserSecurity.vue");
 const ZhiyeDetail = () => import("../views/ZhiyeDetails.vue");
 const CourseDetail = () => import("../views/CourseDetails.vue");
 const Video = () => import("../views/video.vue");
+const SkillTest = () => import("../views/SkillTest.vue");
+const SkillSubject = () => import("../views/SkillSubject.vue");
 export default [
   {
     path: "/login",
@@ -87,6 +88,22 @@ export default [
             }
           }
         ]
+      },
+      {
+        path: "/skilltest",
+        name: "SkillTest",
+        component: SkillTest,
+        position: "head",
+        meta: {
+          nav: {
+            title: "技能测评"
+          }
+        }
+      },
+      {
+        path: "/skilltest/:id",
+        name: "SkillSubject",
+        component: SkillSubject
       }
     ]
   },
